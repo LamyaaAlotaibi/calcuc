@@ -1,6 +1,5 @@
 package edu.pnu.badcalc;
 
-
 public class Calculator {
     public double last;
 
