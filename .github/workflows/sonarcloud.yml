@@ -1,0 +1,27 @@
+name: Build and Analyze with SonarCloud
+on:
+ push:
+   branches: [ "main" ]
+ pull_request:
+   branches: [ "main" ]
+jobs:
+ build:
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v3
+     - name: Set up JDK
+       uses: actions/setup-java@v3
+       with:
+         java-version: '17'
+         distribution: 'temurin'
+     - name: Build and test
+       run: mvn -B verify
+     - name: SonarCloud Scan
+       env:
+         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+       run: |
+         mvn -B verify sonar:sonar \
+           -Dsonar.projectKey=LamyaaAlotaibi_calcuc \
+           -Dsonar.organization=lamyaaalotaibi \
+           -Dsonar.host.url=https://sonarcloud.io \
+           -Dsonar.login=${SONAR_TOKEN}
