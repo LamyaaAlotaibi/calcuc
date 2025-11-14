@@ -10,7 +10,8 @@ public class App {
         System.out.println("Bad Calculator v0.0.1");
         while (true) {
             System.out.print("> ");
-            String line = s.nextLine();
+            String line = s.next
+            Line();
             if (line.equals("quit")) break;
             try {
                 System.out.println("= " + c.parseAndCompute(line));
