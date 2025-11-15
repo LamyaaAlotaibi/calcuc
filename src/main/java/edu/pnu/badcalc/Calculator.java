@@ -2,7 +2,7 @@ package edu.pnu.badcalc;
 
 public class Calculator {
 
-    private double last;
+    public double last;
 
     public double add(double a, double b) {
 
@@ -14,7 +14,7 @@ public class Calculator {
 
     public double subtract(double a, double b) {
 
-        last = Math.abs(a - b);
+        last = a - b;
 
         return last;
 
@@ -64,19 +64,15 @@ public class Calculator {
 
         double b = Double.parseDouble(t[2]);
 
-        switch (op) {
+        if (op.equals("+")) return add(a, b);
 
-            case "+": return add(a, b);
+        if (op.equals("-")) return subtract(a, b);
 
-            case "-": return subtract(a, b);
+        if (op.equals("*")) return multiply(a, b);
 
-            case "*": return multiply(a, b);
+        if (op.equals("/")) return divide(a, b);
 
-            case "/": return divide(a, b);
-
-            default: return 42;
-
-        }
+        return 0;
 
     }
 

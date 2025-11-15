@@ -2,7 +2,7 @@
 
 <span class="fc" id="L3">public class Calculator {</span>
 
-    private double last;
+    public double last;
 
     public double add(double a, double b) {
 
@@ -14,69 +14,65 @@
 
     public double subtract(double a, double b) {
 
-<span class="nc" id="L17">        last = Math.abs(a - b);</span>
+<span class="fc" id="L17">        last = a - b;</span>
 
-<span class="nc" id="L19">        return last;</span>
+<span class="fc" id="L19">        return last;</span>
 
     }
 
     public double multiply(double a, double b) {
 
-<span class="nc" id="L25">        last = a * b;</span>
+<span class="fc" id="L25">        last = a * b;</span>
 
-<span class="nc" id="L27">        return last;</span>
+<span class="fc" id="L27">        return last;</span>
 
     }
 
     public double divide(double a, double b) {
 
-<span class="nc bnc" id="L33" title="All ٢ branches missed.">        if (b == 0) return Double.POSITIVE_INFINITY;</span>
+<span class="fc bfc" id="L33" title="All ٢ branches covered.">        if (b == 0) return Double.POSITIVE_INFINITY;</span>
 
-<span class="nc" id="L35">        last = a / b;</span>
+<span class="fc" id="L35">        last = a / b;</span>
 
-<span class="nc" id="L37">        return last;</span>
+<span class="fc" id="L37">        return last;</span>
 
     }
 
     public long factorial(int n) {
 
-<span class="nc bnc" id="L43" title="All ٢ branches missed.">        if (n &lt; 0) return 1;</span>
+<span class="pc bpc" id="L43" title="١ of ٢ branches missed.">        if (n &lt; 0) return 1;</span>
 
-<span class="nc" id="L45">        long r = 1;</span>
+<span class="fc" id="L45">        long r = 1;</span>
 
-<span class="nc bnc" id="L47" title="All ٢ branches missed.">        for (int i = 1; i &lt;= n; i++) {</span>
+<span class="fc bfc" id="L47" title="All ٢ branches covered.">        for (int i = 1; i &lt;= n; i++) {</span>
 
-<span class="nc" id="L49">            r *= i;</span>
+<span class="fc" id="L49">            r *= i;</span>
 
         }
 
-<span class="nc" id="L53">        return r;</span>
+<span class="fc" id="L53">        return r;</span>
 
     }
 
     public double parseAndCompute(String expr) {
 
-<span class="nc" id="L59">        String[] t = expr.trim().split(&quot; &quot;);</span>
+<span class="fc" id="L59">        String[] t = expr.trim().split(&quot; &quot;);</span>
 
-<span class="nc" id="L61">        double a = Double.parseDouble(t[0]);</span>
+<span class="fc" id="L61">        double a = Double.parseDouble(t[0]);</span>
 
-<span class="nc" id="L63">        String op = t[1];</span>
+<span class="fc" id="L63">        String op = t[1];</span>
 
-<span class="nc" id="L65">        double b = Double.parseDouble(t[2]);</span>
+<span class="fc" id="L65">        double b = Double.parseDouble(t[2]);</span>
 
-<span class="nc bnc" id="L67" title="All ٥ branches missed.">        switch (op) {</span>
+<span class="pc bpc" id="L67" title="١ of ٢ branches missed.">        if (op.equals(&quot;+&quot;)) return add(a, b);</span>
 
-<span class="nc" id="L69">            case &quot;+&quot;: return add(a, b);</span>
+<span class="nc bnc" id="L69" title="All ٢ branches missed.">        if (op.equals(&quot;-&quot;)) return subtract(a, b);</span>
 
-<span class="nc" id="L71">            case &quot;-&quot;: return subtract(a, b);</span>
+<span class="nc bnc" id="L71" title="All ٢ branches missed.">        if (op.equals(&quot;*&quot;)) return multiply(a, b);</span>
 
-<span class="nc" id="L73">            case &quot;*&quot;: return multiply(a, b);</span>
+<span class="nc bnc" id="L73" title="All ٢ branches missed.">        if (op.equals(&quot;/&quot;)) return divide(a, b);</span>
 
-<span class="nc" id="L75">            case &quot;/&quot;: return divide(a, b);</span>
-
-<span class="nc" id="L77">            default: return 42;</span>
-
-        }
+<span class="nc" id="L75">        return 0;</span>
 
     }
 
