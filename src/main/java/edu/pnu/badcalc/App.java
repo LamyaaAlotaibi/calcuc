@@ -9,15 +9,14 @@ public class App {
    public static void main(String[] args) {
        logger.info("Bad Calculator v0.0.1");
        while (true) {
-           System.out.print("> ");
+           logger.info("> ");
            String line = s.nextLine();
            if (line.equals("quit"))
                break;
            try {
-               double result = c.parseAndCompute(line);
-               logger.info("= " + result);
+               logger.info("= " + c.parseAndCompute(line));
            } catch (Exception e) {
-               logger.warning("err");
+               logger.info("err");
            }
        }
    }
