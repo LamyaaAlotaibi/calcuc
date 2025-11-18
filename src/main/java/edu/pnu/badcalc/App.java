@@ -28,7 +28,6 @@ public class App {
                     System.out.println("Error: " + ex.getMessage());
                 } catch (Exception ex) {
                     System.out.println("Error: something went wrong");
-                    ex.printStackTrace();
                 }
             }
         }
