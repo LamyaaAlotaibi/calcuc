@@ -1,23 +1,36 @@
 package edu.pnu.badcalc;
+
 import java.util.Scanner;
-import java.util.logging.Logger;
-import edu.pnu.badcalc.Calculator;
+
 public class App {
-   private static final Logger logger = Logger.getLogger(App.class.getName());
-   private static final Calculator c = new Calculator();
-   private static final Scanner s = new Scanner(System.in);
-   public static void main(String[] args) {
-       logger.info("Bad Calculator v0.0.1");
-       while (true) {
-           logger.info("> ");
-           String line = s.nextLine();
-           if (line.equals("quit"))
-               break;
-           try {
-               logger.info("= " + c.parseAndCompute(line));
-           } catch (Exception e) {
-               logger.info("err");
-           }
-       }
-   }
+
+    private static final Calculator calculator = new Calculator();
+
+    public static void main(String[] args) {
+        System.out.println("Bad Calculator v2.0");
+        System.out.println("Supported operations: + - * / and factorial (!)");
+        System.out.println("Type 'quit' to exit.");
+
+        try (Scanner scanner = new Scanner(System.in)) {
+            while (true) {
+                System.out.print("> ");
+                String input = scanner.nextLine().trim();
+
+                if (input.equalsIgnoreCase("quit")) {
+                    System.out.println("Exiting calculator...");
+                    break;
+                }
+
+                try {
+                    double result = calculator.parseAndCompute(input);
+                    System.out.println("= " + result);
+                } catch (IllegalArgumentException ex) {
+                    System.out.println("Error: " + ex.getMessage());
+                } catch (Exception ex) {
+                    System.out.println("Error: something went wrong");
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
 }
